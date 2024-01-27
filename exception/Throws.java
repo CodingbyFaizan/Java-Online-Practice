@@ -6,24 +6,20 @@ package exception;
 //throws 
 // finally block resource close 
 
-
-class Student {
-
-    public void foundingClass() throws Exception {
-        Class.forName("Demo");
-    }
-}
+// class Student{
+//     public void show() throws ClassNotFoundException{
+//         Class.forName("Demo");
+//     }
+// }
 
 public class Throws {
     public static void main(String[] args){
         
-        Student s = new Student();
         try{
-
-            s.foundingClass();
+            throw new ClassNotFoundException("error");
         }
-        catch(Exception c){
-            System.out.println("CLASS is not presented in the file manager!");
+        catch(ClassNotFoundException c){
+            System.out.println(c);
         }
 
     }
