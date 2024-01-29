@@ -1,26 +1,24 @@
 package exception;
 
 
-//try block 
-//throw custom exception
-//throws 
-// finally block resource close 
-
-// class Student{
-//     public void show() throws ClassNotFoundException{
-//         Class.forName("Demo");
-//     }
-// }
+class Student{
+    public void show() throws ClassNotFoundException{
+        Class.forName("Demo");
+    }
+}
 
 public class Throws {
     public static void main(String[] args){
         
+        Student obj = new Student();
+        
         try{
-            throw new ClassNotFoundException("error");
-        }
-        catch(ClassNotFoundException c){
+            obj.show();
+        }catch(ClassNotFoundException c){
             System.out.println(c);
         }
-
+        finally{
+            System.out.println("Bye");
+        }
     }
 }
