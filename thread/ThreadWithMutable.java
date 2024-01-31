@@ -1,35 +1,29 @@
 package thread;
 
-class Counter{
+class Counter {
     int count = 0;
 
-    public synchronized void increment(){
+    public synchronized void increment() {
         count++;
     }
 }
-
 
 public class ThreadWithMutable {
     public static void main(String[] args) throws InterruptedException {
 
         Counter c = new Counter();
-        
-        Runnable obj1 = new Runnable() {
-            public void run(){
-                for(int i = 1; i<=10000; i++){
-                    c.increment();
-                }
-            }
-        } ;
 
-        Runnable obj2 = new Runnable() {
-            public void run(){
-                for(int i = 1; i<=10000; i++){
-                    c.increment();
-                }
+        Runnable obj1 = () -> {
+            for (int i = 1; i <= 10000; i++) {
+                c.increment();
             }
-        } ;
+        };
 
+        Runnable obj2 = () -> {
+            for (int i = 1; i <= 10000; i++) {
+                c.increment();
+            }
+        };
 
         Thread t1 = new Thread(obj1);
         Thread t2 = new Thread(obj2);
